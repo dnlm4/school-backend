@@ -1,0 +1,12 @@
+quarkus:
+  http:
+    port: 8080
+  datasource:
+    db-kind: postgresql
+    username: postgres
+    password: GDD12345
+    jdbc:
+      url: jdbc:postgresql://localhost:5432/school
+  hibernate-orm:
+    schema-management:
+      strategy: drop-and-create

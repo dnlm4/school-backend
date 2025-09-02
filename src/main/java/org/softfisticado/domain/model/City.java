@@ -1,14 +1,11 @@
 package org.softfisticado.domain.model;
-import jakarta.persistence.*;
-import lombok.*;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+
+import jakarta.persistence.*;
+
 @Entity
-@Table(name = "grade")
-public class Grade {
+@Table(name = "city")
+public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

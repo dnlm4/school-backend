@@ -14,6 +14,9 @@ val quarkusPlatformVersion: String by project
 
 dependencies {
     implementation(enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}"))
+
+    implementation("io.quarkus:quarkus-hibernate-reactive")
+
     implementation("io.quarkus:quarkus-mutiny")
     implementation("io.quarkus:quarkus-rest")
     implementation("io.quarkus:quarkus-smallrye-openapi")
@@ -24,6 +27,8 @@ dependencies {
     implementation("io.quarkus:quarkus-arc")
     testImplementation("io.quarkus:quarkus-junit5")
     testImplementation("io.rest-assured:rest-assured")
+
+
 }
 
 group = "org.softfisticado"

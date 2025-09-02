@@ -17,10 +17,7 @@ public class SectionRepositoryImpl implements SectionRepository {
     @Override
     public Uni<Section> save(Section section) {
 
-        System.out.println("****************zzzz******************************************************");
-        System.out.println(section);
-        System.out.println("**********************************************************************");
-        return pgPool.preparedQuery("INSERT INTO section (id,name) VALUES ($1,$2) RETURNING id")
+        return pgPool.preparedQuery("INSERT INTO school.section (name) VALUES ($1) RETURNING id")
                 .execute(Tuple.of(section.getName()))
                 .onItem().transform(pgRow -> {
                     Row row = pgRow.iterator().next();
