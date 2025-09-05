@@ -16,17 +16,23 @@ dependencies {
     implementation(enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}"))
 
     implementation("io.quarkus:quarkus-hibernate-reactive")
-
     implementation("io.quarkus:quarkus-mutiny")
     implementation("io.quarkus:quarkus-rest")
     implementation("io.quarkus:quarkus-smallrye-openapi")
     implementation("io.quarkus:quarkus-reactive-pg-client")
+    //Activated when quarkus update https://github.com/quarkusio/quarkus/issues
+    //implementation ("io.quarkus:quarkus-reactive-mutiny-vertx-sql-client")
     implementation("io.quarkus:quarkus-rest-jackson")
+
     implementation("org.projectlombok:lombok:1.18.30")
     annotationProcessor("org.projectlombok:lombok:1.18.30")
+    implementation("org.mapstruct:mapstruct:1.5.5.Final")
+    annotationProcessor("org.mapstruct:mapstruct-processor:1.5.5.Final")
+
     implementation("io.quarkus:quarkus-arc")
     testImplementation("io.quarkus:quarkus-junit5")
     testImplementation("io.rest-assured:rest-assured")
+
 
 
 }

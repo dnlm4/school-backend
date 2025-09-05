@@ -1,23 +1,25 @@
-package org.softfisticado.infrastructure.adapters.output;
+package org.softfisticado.infrastructure.adapters.output.repository;
 
 import io.smallrye.mutiny.Uni;
 import io.vertx.mutiny.pgclient.PgPool;
 import io.vertx.mutiny.sqlclient.Row;
-import io.vertx.mutiny.sqlclient.Tuple;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.softfisticado.domain.model.Grade;
 import org.softfisticado.domain.repository.GradeRepository;
+import org.softfisticado.infrastructure.shared.QuerySql;
 
 @ApplicationScoped
-public class GradeRepositoryImpl implements GradeRepository {
+public class GradeRepositoryImpl extends QuerySql<Grade> implements GradeRepository {
     @Inject
     PgPool pgPool;
 
-    @Override
+
     public Uni<Grade> save(Grade grade){
-        return pgPool.preparedQuery("")
-                .execute(Tuple.of(grade.getName()))
+        String querySql=this.buildQuery(grade);
+        return pgPool.preparedQuery(querySql)
+                .execute(this.getAttributeValues())
+//                .execute(Tuple.tuple())
                 .onItem().transform(pgRow->{
                     Row row = pgRow.iterator().next();
                     grade.setId(row.getLong("id"));

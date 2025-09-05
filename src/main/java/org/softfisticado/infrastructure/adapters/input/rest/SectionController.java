@@ -1,4 +1,4 @@
-package org.softfisticado.infrastructure.adapters.input;
+package org.softfisticado.infrastructure.adapters.input.rest;
 
 import io.smallrye.common.annotation.NonBlocking;
 import io.smallrye.mutiny.Uni;
@@ -14,6 +14,7 @@ import org.softfisticado.application.usecases.section.CreateSectionUseCase;
 import org.softfisticado.domain.model.Section;
 
 @Path("/section")
+@Tag(name = "Section")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @NonBlocking
@@ -23,10 +24,12 @@ public class SectionController {
 
     @POST
     public Uni<Response> createSection(Section section) {
-
-
         return createSectionUseCase.save(section)
                 //.onItem().transform(saved -> Response.status(Response.Status.CREATED).entity(saved).build());
-                .onItem().transform(saved -> Response.status(Response.Status.CREATED).entity(saved).build());
+                .onItem()
+                .transform(saved -> Response
+                        .status(Response.Status.CREATED)
+                        .entity(saved)
+                        .build());
     }
 }

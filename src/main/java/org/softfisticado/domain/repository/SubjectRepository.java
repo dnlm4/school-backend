@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface SubjectRepository {
     Uni<Subject> save(Subject subject);
-    Uni<Subject> update(Subject subject);
-    Uni<Subject> findById(Long id);
-    Uni<List<Subject>> findAll();
+    //Uni<Subject> update(Subject subject);
+    //Uni<Subject> findById(Long id);
+    //Uni<List<Subject>> findAll();
 }
